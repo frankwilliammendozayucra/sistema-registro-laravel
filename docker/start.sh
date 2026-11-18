@@ -22,5 +22,10 @@ php artisan config:cache || true
 php artisan route:cache || true
 php artisan view:cache || true
 
-echo "[*] Iniciando servidor web Apache en puerto $PORT..."
+# Configurar puerto dinamico de Apache para Render
+PORT="${PORT:-80}"
+sed -i "s/Listen .*/Listen ${PORT}/g" /etc/apache2/ports.conf
+sed -i "s/<VirtualHost \*:.*>/<VirtualHost \*:${PORT}>/g" /etc/apache2/sites-available/000-default.conf
+
+echo "[*] Iniciando servidor web Apache en puerto ${PORT}..."
 exec apache2-foreground
