@@ -1,0 +1,22 @@
+# Ignorar herramientas locales portables y descargas pesadas
+/tools/
+/tests_data/
+*.zip
+*.log
+
+# Ignorar archivos del entorno Laravel
+.env
+registro_app/.env
+registro_app/.env.backup
+registro_app/.env.production
+registro_app/vendor/
+registro_app/node_modules/
+registro_app/public/storage
+registro_app/storage/framework/cache/*
+registro_app/storage/framework/sessions/*
+registro_app/storage/framework/views/*
+registro_app/storage/app/public/usuarios/*
+!registro_app/storage/app/public/.gitignore
+
+# Reportes masivos temporales de JMeter
+jmeter_tests/reports/*.jtl
